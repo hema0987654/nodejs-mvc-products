@@ -1,0 +1,157 @@
+/* === Global === */
+body {
+  background: linear-gradient(to right, #141e30, #243b55);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* === Theme Toggle Button === */
+.navbar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+#themeToggle {
+  background-color: #00ffe0;
+  color: #0f2027;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+#themeToggle:hover {
+  background-color: #00bfa5;
+  color: white;
+}
+
+/* === Container === */
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 50px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  animation: fadeIn 1s ease forwards;
+}
+
+/* === Title === */
+.page-title {
+  font-size: 2.8rem;
+  color: #00ff9c;
+  margin-bottom: 20px;
+}
+
+/* === Subtitle === */
+.lead {
+  font-size: 1.3rem;
+  color: #cccccc;
+  margin-bottom: 35px;
+}
+
+/* === Buttons === */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.btn {
+  background-color: #00ff9c;
+  color: #0f2027;
+  padding: 14px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,255,156,0.2);
+}
+.btn:hover {
+  background-color: #00c97b;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,255,156,0.4);
+}
+.btn.add {
+  background-color: #ffbf00;
+  color: #0f2027;
+}
+.btn.add:hover {
+  background-color: #e6ac00;
+  box-shadow: 0 8px 20px rgba(255,191,0,0.4);
+}
+
+/* === Animation === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === Light Mode === */
+body.light-mode {
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  color: #111;
+}
+body.light-mode .container {
+  background: rgba(255, 255, 255, 0.85);
+  color: #111;
+}
+body.light-mode .page-title {
+  color: #00695c;
+}
+body.light-mode .lead {
+  color: #333;
+}
+body.light-mode .btn {
+  background-color: #00695c;
+  color: #fff;
+}
+body.light-mode .btn:hover {
+  background-color: #004d40;
+}
+body.light-mode .btn.add {
+  background-color: #ff9100;
+}
+body.light-mode .btn.add:hover {
+  background-color: #ff6d00;
+}
+body.light-mode #themeToggle {
+  background-color: #004d40;
+  color: #fff;
+}
+body.light-mode #themeToggle:hover {
+  background-color: #00695c;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 20px;
+  }
+  .page-title {
+    font-size: 2rem;
+  }
+  .lead {
+    font-size: 1rem;
+  }
+  .btn {
+    padding: 12px 20px;
+  }
+}

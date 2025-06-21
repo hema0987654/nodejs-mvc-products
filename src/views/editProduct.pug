@@ -1,0 +1,17 @@
+html
+  head
+    title= title || 'Edit Product'
+    link(rel="stylesheet", href="/style/styleEdit.css")
+  body
+    .container
+      h1.page-title Edit Product
+
+      form(method="POST", action=`/api/product/${product.id}?_method=PATCH`, id="editForm")
+        input(type="text", name="title", placeholder="Product Title", required, value=product.title)
+        input(type="number", name="price", placeholder="Price", step="0.01", required, value=product.price)
+        input(type="text", name="image", placeholder="Image URL", value=product.image)
+        textarea(name="Description", placeholder="Description", rows="4")= product.Description
+
+        .btn-group
+          button.btn.primary(type="submit") 💾 Save Changes
+          a.btn.secondary(href="/api/products") ❌ Cancel

@@ -1,0 +1,166 @@
+/* === Body & Layout === */
+body {
+  background: linear-gradient(to right, #141e30, #243b55);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* === Theme Toggle === */
+.navbar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+#themeToggle {
+  background-color: #00ffe0;
+  color: #0f2027;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+#themeToggle:hover {
+  background-color: #00bfa5;
+  color: white;
+}
+
+/* === Container === */
+.container {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 90%;
+  max-width: 480px;
+  text-align: center;
+}
+
+/* === Title === */
+.page-title {
+  font-size: 2rem;
+  color: #00ffcc;
+  margin-bottom: 30px;
+}
+
+/* === Form === */
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.add-form input,
+.add-form textarea {
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+.add-form input::placeholder,
+.add-form textarea::placeholder {
+  color: #ccc;
+}
+.add-form input:focus,
+.add-form textarea:focus {
+  background-color: rgba(255, 255, 255, 0.25);
+  outline: none;
+}
+
+/* === Buttons === */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+.btn {
+  padding: 12px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+.btn.primary {
+  background-color: #00ffcc;
+  color: #0f2027;
+}
+.btn.primary:hover {
+  background-color: #00dab8;
+  transform: translateY(-2px);
+}
+.btn.secondary {
+  background-color: #ff4f4f;
+  color: #fff;
+}
+.btn.secondary:hover {
+  background-color: #e54444;
+  transform: translateY(-2px);
+}
+
+/* === Light Mode === */
+body.light-mode {
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  color: #111;
+}
+body.light-mode .container {
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+}
+body.light-mode .page-title {
+  color: #00695c;
+}
+body.light-mode input,
+body.light-mode textarea {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #111;
+}
+body.light-mode input:focus,
+body.light-mode textarea:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+body.light-mode .btn.primary {
+  background-color: #00695c;
+  color: #fff;
+}
+body.light-mode .btn.primary:hover {
+  background-color: #004d40;
+}
+body.light-mode .btn.secondary {
+  background-color: #c62828;
+}
+body.light-mode .btn.secondary:hover {
+  background-color: #b71c1c;
+}
+body.light-mode #themeToggle {
+  background-color: #004d40;
+  color: #fff;
+}
+body.light-mode #themeToggle:hover {
+  background-color: #00695c;
+}
+
+/* === Responsive === */
+@media (max-width: 500px) {
+  .container {
+    padding: 30px 20px;
+  }
+  .page-title {
+    font-size: 1.6rem;
+  }
+}

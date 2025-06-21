@@ -1,0 +1,290 @@
+/* === Reset === */
+a {
+  text-decoration: none;
+}
+
+/* === Base === */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #121212, #1c1c1c);
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* === Navbar === */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+  background: #111;
+  border-bottom: 1px solid #333;
+  flex-wrap: wrap;
+}
+.navbar a,
+.navbar button {
+  color: #00ffe0;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+.navbar a:hover,
+.navbar button:hover {
+  background-color: #222;
+  color: #ff00c8;
+  text-shadow: 0 0 8px #ff00c8;
+}
+
+/* === Container & Title === */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+.page-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: #ffffff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* === Filter Form === */
+.filter-form {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.filter-form label {
+  color: #ccc;
+  font-size: 16px;
+  margin-right: 10px;
+}
+.filter-form select {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  background-color: #2a2a2a;
+  color: #00ffcc;
+  font-size: 16px;
+  margin-right: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.filter-form select:focus {
+  outline: none;
+  border: 1px solid #74ebd5;
+  background-color: #1c1c1c;
+}
+
+/* === Reset Link === */
+.reset-link {
+  font-size: 14px;
+  color: #74ebd5;
+  text-decoration: none;
+  border: 1px solid #555;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+.reset-link:hover {
+  background-color: #2c2c2c;
+}
+
+/* === Info & Empty === */
+.filtered-info {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #bbbbbb;
+}
+.empty-message {
+  text-align: center;
+  color: #ccc;
+  margin-top: 30px;
+}
+
+/* === Product Grid === */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 30px;
+}
+
+/* === Product Card === */
+.card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #333;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards;
+  transition: 0.3s ease;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2),
+              0 0 15px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+.card:hover img {
+  transform: scale(1.05);
+}
+.card h2 {
+  font-size: 22px;
+  color: #f1f1f1;
+}
+.card p {
+  font-size: 15px;
+  color: #b0b0b0;
+  margin: 8px 0;
+  line-height: 1.5;
+}
+.card .price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #27ae60;
+  margin-top: 10px;
+}
+
+/* === Actions (Edit/Delete) === */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.actions .btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s ease;
+}
+.btn.edit {
+  background-color: #00ffcc;
+  color: #111;
+}
+.btn.edit:hover {
+  background-color: #00ccb3;
+}
+.btn.delete {
+  background-color: #ff4f4f;
+  color: white;
+}
+.btn.delete:hover {
+  background-color: #e60000;
+}
+
+/* === Floating Add Button === */
+.floating-add {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #00ffae, #00b3ff);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 20px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+  animation: pulse 2.5s infinite ease-in-out;
+}
+.floating-add:hover {
+  background: linear-gradient(135deg, #00b3ff, #00ffae);
+  transform: scale(1.08);
+}
+
+/* === Animations === */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* === Light Mode === */
+body.light-mode {
+  background: linear-gradient(135deg, #f0f0f0, #ffffff);
+  color: #111;
+}
+body.light-mode .navbar {
+  background-color: #eaeaea;
+  border-bottom: 1px solid #ccc;
+}
+body.light-mode .navbar a,
+body.light-mode .navbar button {
+  color: #006666;
+}
+body.light-mode .navbar a:hover,
+body.light-mode .navbar button:hover {
+  background-color: #ddd;
+  color: #000;
+}
+body.light-mode .card {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+body.light-mode .card h2,
+body.light-mode .card .price,
+body.light-mode .card p {
+  color: #111;
+}
+body.light-mode .filter-form label {
+  color: #111;
+}
+body.light-mode .filter-form select {
+  background-color: #ffffff;
+  color: #000;
+  border: 1px solid #aaa;
+}
+body.light-mode .reset-link {
+  color: #333;
+  border-color: #aaa;
+}
+body.light-mode .floating-add {
+  background: #007acc;
+  box-shadow: 0 0 15px rgba(0, 122, 204, 0.4);
+}
+
+/* === Responsive === */
+@media (max-width: 500px) {
+  .card {
+    padding: 15px;
+  }
+  .card h2 {
+    font-size: 18px;
+  }
+  .card p {
+    font-size: 14px;
+  }
+  .card img {
+    height: 160px;
+  }
+}

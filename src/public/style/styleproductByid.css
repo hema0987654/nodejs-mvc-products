@@ -1,0 +1,150 @@
+/* === Global === */
+body {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* === Theme Button === */
+.navbar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+#themeToggle {
+  background-color: #00ffe0;
+  color: #0f2027;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+#themeToggle:hover {
+  background-color: #00bfa5;
+  color: white;
+}
+
+/* === Container & Card === */
+.container {
+  padding: 30px;
+}
+.product-card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 350px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 40px rgba(0, 255, 156, 0.4);
+}
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+.product-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #00ff9c;
+}
+.product-card p.price {
+  font-size: 1.2rem;
+  color: #ffd700;
+  margin-bottom: 10px;
+}
+.product-card p.description {
+  font-size: 0.95rem;
+  color: #dddddd;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* === Button === */
+.btn {
+  display: inline-block;
+  background-color: #00ff9c;
+  color: #0f2027;
+  padding: 12px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background-color: #00c97b;
+}
+
+/* === Page Title === */
+.page-title {
+  font-size: 2rem;
+  color: #00ff9c;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* === Light Mode === */
+body.light-mode {
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  color: #111;
+}
+body.light-mode .product-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #ccc;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+body.light-mode .product-card h2 {
+  color: #00695c;
+}
+body.light-mode .product-card p.price {
+  color: #ff6f00;
+}
+body.light-mode .product-card p.description {
+  color: #333;
+}
+body.light-mode .btn {
+  background-color: #00695c;
+  color: #fff;
+}
+body.light-mode .btn:hover {
+  background-color: #004d40;
+}
+body.light-mode .page-title {
+  color: #00695c;
+}
+body.light-mode #themeToggle {
+  background-color: #004d40;
+  color: #fff;
+}
+body.light-mode #themeToggle:hover {
+  background-color: #00695c;
+}
+
+/* === Responsive === */
+@media (max-width: 500px) {
+  .product-card {
+    width: 90%;
+    padding: 20px;
+  }
+  .page-title {
+    font-size: 1.5rem;
+  }
+}

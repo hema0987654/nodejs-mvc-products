@@ -1,0 +1,92 @@
+html
+  head
+    title= title || 'Product List'
+    link(rel="stylesheet", href="/style/stylesProduct.css")
+    link(rel="stylesheet", href="https://unpkg.com/aos@2.3.1/dist/aos.css")
+    script(src="https://unpkg.com/axios/dist/axios.min.js")
+  body
+    // Navigation
+    nav.navbar
+      a(href="/api") 🏠 Home
+      a(href="/api/addProduct") ➕ Add Product
+      a(href="/api/products") 🏭 View Products
+      button#themeToggle Toggle Theme
+
+    .container
+      h1.page-title= title || 'Our Products'
+
+      form(method="GET", action="/api/products", class="filter-form")
+        label(for="filter") Filter by:
+        select(name="filter", id="filter", onchange="this.form.submit()")
+          option(value="" selected=!filter) All
+          option(value="title" selected=filter==='title') Title
+          option(value="price" selected=filter==='price') Price
+          option(value="title,price" selected=filter==='title,price') Title & Price
+          option(value="title,price,image" selected=filter==='title,price,image') Title & Price & Image
+          option(value="title,Description,image,price" selected=filter==='title,Description,image,price') Title & Description & Image & Price
+
+        if filter
+          a.reset-link(href="/api/products") 🔄 Reset Filter
+
+      if filter
+        p.filtered-info Showing products filtered by "#{filter}"
+
+      if products && products.length
+        .products-grid
+          each product in products
+            .card(data-aos="zoom-in")
+              if !filter || filter.includes('image')
+                if product.image
+                  img(src=product.image, alt=product.title)
+              if !filter || filter.includes('title')
+                if product.title
+                  a(href=`/api/product/${product.id}`) 
+                    h2= product.title
+              if !filter || filter.includes('price')
+                if product.price
+                  p.price Price: #{product.price} $
+              if product.Description && (!filter || filter.includes('Description'))
+                p.description= product.Description
+              .actions
+                a.btn.edit(href=`/api/editProduct/${product.id}`) ✏️ Edit
+                // ✅ تم تصحيح استدعاء دالة الحذف هنا
+                button.btn.delete(onclick=`deleteProduct('${product.id}')`) 🗑️ Delete
+      else
+        p.empty-message No products available at the moment.
+
+    // Floating Add Product Button
+    a.floating-add(href="/api/addProduct") ➕
+
+    script(src="https://unpkg.com/aos@2.3.1/dist/aos.js")
+    script.
+      AOS.init({ duration: 1000, once: true });
+
+      const toggleBtn = document.getElementById('themeToggle');
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        const isLight = document.body.classList.contains('light-mode');
+        toggleBtn.textContent = isLight ? '🌙 Dark Mode' : '☀️ Light Mode';
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      });
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+          document.body.classList.add('light-mode');
+          toggleBtn.textContent = '🌙 Dark Mode';
+        }
+      });
+
+      function deleteProduct(id) {
+        if (confirm("Are you sure you want to delete this product?")) {
+          axios.delete(`/api/product/${id}`)
+            .then(() => {
+              alert("Product deleted successfully.");
+              window.location.reload();
+            })
+            .catch(err => {
+              alert("An error occurred while deleting the product.");
+              console.error(err);
+            });
+        }
+      }

@@ -1,0 +1,36 @@
+html
+  head
+    title= title || 'Welcome'
+    link(rel="stylesheet", href="/style/styles.css")
+    link(rel="stylesheet", href="https://unpkg.com/aos@2.3.1/dist/aos.css")
+  body
+    nav.navbar
+      button#themeToggle 🌙 Toggle Theme
+
+    .container(data-aos="zoom-in")
+      h1.page-title= message || 'Welcome to Our Store!'
+      p.lead Discover amazing products or add your own!
+
+      .btn-group
+        a.btn(href="/api/products") 🛍️ View Products
+        a.btn.add(href="/api/addProduct") ➕ Add New Product
+
+    script(src="https://unpkg.com/aos@2.3.1/dist/aos.js")
+    script.
+      AOS.init({ duration: 1000, once: true });
+
+      const toggleBtn = document.getElementById('themeToggle');
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        const isLight = document.body.classList.contains('light-mode');
+        toggleBtn.textContent = isLight ? '🌙 Dark Mode' : '☀️ Light Mode';
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      });
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+          document.body.classList.add('light-mode');
+          toggleBtn.textContent = '🌙 Dark Mode';
+        }
+      });

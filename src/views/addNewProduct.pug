@@ -1,0 +1,40 @@
+html
+  head
+    title= title || 'Add New Product'
+    link(rel="stylesheet", href="/style/styleAdd.css")
+    link(rel="stylesheet", href="https://unpkg.com/aos@2.3.1/dist/aos.css")
+  body
+    nav.navbar
+      button#themeToggle Toggle Theme
+
+    .container(data-aos="fade-up")
+      h1.page-title Add New Product
+
+      form(method="POST", action="/api/addProduct", class="add-form")
+        input(type="text", name="title", placeholder="Product Title", required)
+        input(type="number", name="price", placeholder="Price", step="0.01", required)
+        input(type="text", name="image", placeholder="Image URL")
+        textarea(name="Description", placeholder="Description", rows="4")
+        .btn-group
+          button.btn.primary(type="submit") ➕ Add Product
+          a.btn.secondary(href="/api/products") ❌ Cancel
+
+    script(src="https://unpkg.com/aos@2.3.1/dist/aos.js")
+    script.
+      AOS.init({ duration: 1000, once: true });
+
+      const toggleBtn = document.getElementById('themeToggle');
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        const isLight = document.body.classList.contains('light-mode');
+        toggleBtn.textContent = isLight ? '🌙 Dark Mode' : '☀️ Light Mode';
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      });
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+          document.body.classList.add('light-mode');
+          toggleBtn.textContent = '🌙 Dark Mode';
+        }
+      });
