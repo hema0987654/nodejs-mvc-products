@@ -15,8 +15,10 @@ class ProductsControllers{
 
     findProductBYid(req:Request){
         const id = +req.params.id;
+        console.log(`Finding product with ID: ${id}`);
         return this.product.findProductByID(id);
     }
+    
 
   AddProduct(req: Request) {
   const { title, price, Description, image } = req.body;
