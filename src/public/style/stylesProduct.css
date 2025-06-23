@@ -1,9 +1,8 @@
-/* === Reset === */
 a {
   text-decoration: none;
 }
 
-/* === Base === */
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #121212, #1c1c1c);
@@ -13,40 +12,79 @@ body {
   transition: background 0.5s ease, color 0.5s ease;
 }
 
-/* === Navbar === */
 .navbar {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px 0;
+  justify-content: space-between; 
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 15px 30px;
   background: #111;
   border-bottom: 1px solid #333;
-  flex-wrap: wrap;
-}
-.navbar a,
-.navbar button {
-  color: #00ffe0;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 8px 16px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: 0.3s ease;
-}
-.navbar a:hover,
-.navbar button:hover {
-  background-color: #222;
-  color: #ff00c8;
-  text-shadow: 0 0 8px #ff00c8;
 }
 
-/* === Container & Title === */
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #00ffe0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.btn,
+.btn-theme {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 16px;
+  border-radius: 40px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-theme {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.btn:hover {
+  background-color: #00ff9c;
+  color: #0f2027;
+  box-shadow: 0 5px 15px rgba(0, 255, 156, 0.3);
+}
+
+body.light-mode .navbar {
+  background: #f2f2f2;
+}
+body.light-mode .logo {
+  color: #006666;
+}
+body.light-mode .btn,
+body.light-mode .btn-theme {
+  background: #e0e0e0;
+  color: #111;
+}
+body.light-mode .btn:hover {
+  background: #ccc;
+  color: #000;
+}
+
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 40px 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideFadeIn 0.8s forwards;
 }
 .page-title {
   text-align: center;
@@ -57,7 +95,6 @@ body {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
-/* === Filter Form === */
 .filter-form {
   text-align: center;
   margin-bottom: 30px;
@@ -83,7 +120,6 @@ body {
   background-color: #1c1c1c;
 }
 
-/* === Reset Link === */
 .reset-link {
   font-size: 14px;
   color: #74ebd5;
@@ -97,7 +133,6 @@ body {
   background-color: #2c2c2c;
 }
 
-/* === Info & Empty === */
 .filtered-info {
   text-align: center;
   font-size: 16px;
@@ -110,14 +145,12 @@ body {
   margin-top: 30px;
 }
 
-/* === Product Grid === */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 30px;
 }
 
-/* === Product Card === */
 .card {
   background: #1a1a1a;
   border-radius: 16px;
@@ -132,9 +165,10 @@ body {
   position: relative;
 }
 .card:hover {
-  transform: translateY(-10px) scale(1.03);
+  transform: translateY(-12px) scale(1.04);
   box-shadow: 0 0 30px rgba(0, 255, 255, 0.2),
-              0 0 15px rgba(255, 255, 255, 0.1);
+              0 0 15px rgba(255, 255, 255, 0.1),
+              0 10px 20px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 .card img {
@@ -165,7 +199,6 @@ body {
   margin-top: 10px;
 }
 
-/* === Actions (Edit/Delete) === */
 .actions {
   display: flex;
   justify-content: center;
@@ -195,7 +228,6 @@ body {
   background-color: #e60000;
 }
 
-/* === Floating Add Button === */
 .floating-add {
   position: fixed;
   bottom: 30px;
@@ -215,7 +247,21 @@ body {
   transform: scale(1.08);
 }
 
-/* === Animations === */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  color: #888;
+  border-top: 1px solid #333;
+  margin-top: 50px;
+  font-size: 14px;
+}
+body.light-mode .footer {
+  background: #f2f2f2;
+  color: #555;
+  border-top: 1px solid #ccc;
+}
+
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -227,8 +273,13 @@ body {
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-/* === Light Mode === */
 body.light-mode {
   background: linear-gradient(135deg, #f0f0f0, #ffffff);
   color: #111;
@@ -273,8 +324,15 @@ body.light-mode .floating-add {
   box-shadow: 0 0 15px rgba(0, 122, 204, 0.4);
 }
 
-/* === Responsive === */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
+  .filter-form select {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .filter-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
   .card {
     padding: 15px;
   }

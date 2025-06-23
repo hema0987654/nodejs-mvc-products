@@ -5,7 +5,7 @@ html
     link(rel="stylesheet", href="https://unpkg.com/aos@2.3.1/dist/aos.css")
   body
     nav.navbar
-      button#themeToggle Toggle Theme
+      button#themeToggle ☀️ Light Mode
 
     .container(data-aos="zoom-in")
       h1.page-title= title || 'Product Details'
@@ -14,7 +14,9 @@ html
         h2= products.title
         p.price Price: #{products.price} $
         p.description= products.Description
-        a.btn(href="/api/products") 🔙 Back to Products
+        .btn-group
+          a.btn.secondary(href="/api/products") 🔙 Back to Products
+          button.btn.add-to-cart(onclick=`addToCart(${JSON.stringify(products)})`) 🛒 Add to Cart
 
     script(src="https://unpkg.com/aos@2.3.1/dist/aos.js")
     script.
@@ -35,3 +37,15 @@ html
           toggleBtn.textContent = '🌙 Dark Mode';
         }
       });
+
+      function addToCart(product) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const exists = cart.find(item => item.id === product.id);
+        if (!exists) {
+          cart.push(product);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          alert('✅ Product added to cart!');
+        } else {
+          alert('🛒 Product already in cart.');
+        }
+      }

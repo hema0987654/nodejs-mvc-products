@@ -1,12 +1,22 @@
 html
   head
     title= title || 'Add New Product'
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/style/styleAdd.css")
     link(rel="stylesheet", href="https://unpkg.com/aos@2.3.1/dist/aos.css")
   body
+    // Navbar
     nav.navbar
-      button#themeToggle Toggle Theme
+      .logo MyStore
+      .nav-links
+        a.btn(href="/api") 🏠 Home
+        a.btn(href="/api/products") 🏭 Products
+        if isLoggedIn
+          a.btn(href="/api/addProduct") ➕ Add Product
+        button#themeToggle.btn-theme 🌙
 
+    // Main Content
     .container(data-aos="fade-up")
       h1.page-title Add New Product
 
@@ -19,6 +29,11 @@ html
           button.btn.primary(type="submit") ➕ Add Product
           a.btn.secondary(href="/api/products") ❌ Cancel
 
+    // Footer
+    footer.footer
+      p &copy; #{new Date().getFullYear()} MyStore. All rights reserved.
+
+    // Scripts
     script(src="https://unpkg.com/aos@2.3.1/dist/aos.js")
     script.
       AOS.init({ duration: 1000, once: true });
@@ -27,7 +42,7 @@ html
       toggleBtn.addEventListener('click', () => {
         document.body.classList.toggle('light-mode');
         const isLight = document.body.classList.contains('light-mode');
-        toggleBtn.textContent = isLight ? '🌙 Dark Mode' : '☀️ Light Mode';
+        toggleBtn.textContent = isLight ? '🌙' : '☀️';
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
       });
 
@@ -35,6 +50,6 @@ html
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
           document.body.classList.add('light-mode');
-          toggleBtn.textContent = '🌙 Dark Mode';
+          toggleBtn.textContent = '🌙';
         }
       });

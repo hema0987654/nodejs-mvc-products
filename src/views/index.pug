@@ -1,20 +1,40 @@
 html
   head
-    title= title || 'Welcome'
+    title= title || 'Welcome to MyStore'
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/style/styles.css")
     link(rel="stylesheet", href="https://unpkg.com/aos@2.3.1/dist/aos.css")
-  body
-    nav.navbar
-      button#themeToggle 🌙 Toggle Theme
+  body(class="fade-in")
+    // Navbar
+    header.navbar
+      .logo MyStore
+      .nav-links
+        if !user
+          a.btn(href="/login") 🔐 Login
+          a.btn(href="/signup") 📝 Sign Up
+        else
+          a.btn(href="/cart") 🛒 Cart
+          a.btn(href="/logout") 🚪 Logout
+        button#themeToggle.btn-theme 🌙
 
-    .container(data-aos="zoom-in")
+    // Main content
+    main.container(data-aos="zoom-in")
       h1.page-title= message || 'Welcome to Our Store!'
-      p.lead Discover amazing products or add your own!
+      p.lead Explore great deals or share your own products.
 
       .btn-group
         a.btn(href="/api/products") 🛍️ View Products
-        a.btn.add(href="/api/addProduct") ➕ Add New Product
 
+        // صلاحيات للمستخدم فقط
+        if user
+          a.btn.add(href="/api/addProduct") ➕ Add New Product
+
+    // Footer (اختياري)
+    footer.footer
+      p &copy; #{new Date().getFullYear()} MyStore. All rights reserved.
+
+    // Scripts
     script(src="https://unpkg.com/aos@2.3.1/dist/aos.js")
     script.
       AOS.init({ duration: 1000, once: true });
@@ -23,7 +43,7 @@ html
       toggleBtn.addEventListener('click', () => {
         document.body.classList.toggle('light-mode');
         const isLight = document.body.classList.contains('light-mode');
-        toggleBtn.textContent = isLight ? '🌙 Dark Mode' : '☀️ Light Mode';
+        toggleBtn.textContent = isLight ? '🌙' : '☀️';
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
       });
 
@@ -31,6 +51,17 @@ html
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
           document.body.classList.add('light-mode');
-          toggleBtn.textContent = '🌙 Dark Mode';
+          toggleBtn.textContent = '🌙';
         }
+      });
+
+      // انتقال ناعم بين الصفحات
+      document.querySelectorAll('a[href^="/"]').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          document.body.classList.remove('fade-in');
+          document.body.classList.add('fade-out');
+          setTimeout(() => window.location.href = href, 300);
+        });
       });

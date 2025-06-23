@@ -9,6 +9,29 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* === Theme Toggle Button === */
+.navbar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+#themeToggle {
+  background-color: #00ffe0;
+  color: #0f2027;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+#themeToggle:hover {
+  background-color: #00bfa5;
+  color: white;
 }
 
 /* === Container === */
@@ -36,8 +59,6 @@ form {
   flex-direction: column;
   gap: 15px;
 }
-
-/* === Inputs === */
 input,
 textarea {
   padding: 12px 15px;
@@ -48,12 +69,10 @@ textarea {
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
-
 input::placeholder,
 textarea::placeholder {
   color: #ccc;
 }
-
 input:focus,
 textarea:focus {
   background-color: rgba(255, 255, 255, 0.25);
@@ -67,8 +86,6 @@ textarea:focus {
   gap: 15px;
   margin-top: 15px;
 }
-
-/* === Buttons === */
 .btn {
   padding: 12px 25px;
   border-radius: 50px;
@@ -78,23 +95,71 @@ textarea:focus {
   border: none;
   transition: all 0.3s ease;
 }
-
 .btn.primary {
   background-color: #00ffcc;
   color: #0f2027;
 }
-
 .btn.primary:hover {
   background-color: #00dab8;
   transform: translateY(-2px);
 }
-
 .btn.secondary {
   background-color: #ff4f4f;
   color: #fff;
 }
-
 .btn.secondary:hover {
   background-color: #e54444;
   transform: translateY(-2px);
+}
+
+/* === Light Mode === */
+body.light-mode {
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  color: #111;
+}
+body.light-mode .container {
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+}
+body.light-mode .page-title {
+  color: #00695c;
+}
+body.light-mode input,
+body.light-mode textarea {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #111;
+}
+body.light-mode input:focus,
+body.light-mode textarea:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+body.light-mode .btn.primary {
+  background-color: #00695c;
+  color: #fff;
+}
+body.light-mode .btn.primary:hover {
+  background-color: #004d40;
+}
+body.light-mode .btn.secondary {
+  background-color: #c62828;
+}
+body.light-mode .btn.secondary:hover {
+  background-color: #b71c1c;
+}
+body.light-mode #themeToggle {
+  background-color: #004d40;
+  color: #fff;
+}
+body.light-mode #themeToggle:hover {
+  background-color: #00695c;
+}
+
+/* === Responsive === */
+@media (max-width: 500px) {
+  .container {
+    padding: 30px 20px;
+  }
+  .page-title {
+    font-size: 1.6rem;
+  }
 }
