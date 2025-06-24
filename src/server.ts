@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import run from "./runserver.js";
 import router from "./router/router.js";
+import ErroMiddleWare from './Middlewares/erroMiddelware.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,6 +20,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api", router);
+app.use(ErroMiddleWare.handel);
 
 const PORT = 5000;
 app.listen(PORT, () => run(PORT));
