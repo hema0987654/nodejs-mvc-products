@@ -10,7 +10,9 @@
     "dev": "node --loader ts-node/esm src/server.ts"
   },
   "dependencies": {
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "helmet": "^5.0.2",
     "method-override": "^3.0.0",
     "pug": "^3.0.3"
   },

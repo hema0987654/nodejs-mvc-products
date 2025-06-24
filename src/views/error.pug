@@ -1,0 +1,76 @@
+doctype html
+html(lang="en")
+  head
+    title Error Occurred
+    style.
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #1e1e2f, #121212);
+        color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 20px;
+      }
+
+      .error-box {
+        background: #2c2c3e;
+        border-left: 6px solid #ff3c3c;
+        padding: 30px 40px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(255, 60, 60, 0.4);
+        max-width: 700px;
+        width: 100%;
+        animation: slideDown 0.5s ease-out;
+      }
+
+      @keyframes slideDown {
+        from { transform: translateY(-20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+
+      .error-icon {
+        font-size: 50px;
+        color: #ff3c3c;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 26px;
+        color: #ff3c3c;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .message, .stack {
+        background: #1b1b2b;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 10px;
+        font-size: 15px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+  body
+    .error-box
+      .error-icon ⚠️
+      h1= error || 'An Unexpected Error Occurred'
+      .message
+        strong Message: 
+        | #{message || 'Something went wrong.'}
+      if stack
+        .stack
+          strong Stack Trace:
+          br
+          | #{stack}

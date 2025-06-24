@@ -7,11 +7,21 @@ class ErroMiddleWare{
         if (req.originalUrl.startsWith('/api')) {
             res.status(500).json({
                 error:  "internal server Error",
-                message:"bk"
+                message:"jjk",
+                stack:err.stack
             })
         }
-        next()
+        return;  
+    
+        res.status(500).render("error", {
+            error: "internal server Error",
+            message: "bk",
+            stack: err.stack
+        });
+        next();
     }
+
+    
 
     
 }

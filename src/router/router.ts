@@ -15,6 +15,9 @@ router.get("/", (req, res) => {
   res.render("index", { title: "Hey", message: "Hello there!" });
 });
 
+router.get("/Error", (req, res) => {
+  res.render("error")});
+
 router.get("/products", (req, res) => {
   const filter = req.query.filter as string;
   const data = ProductControllers.getProducts(req);
