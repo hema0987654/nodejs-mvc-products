@@ -12,13 +12,16 @@
   "dependencies": {
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "express-rate-limit": "^7.5.1",
     "helmet": "^5.0.2",
     "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
     "pug": "^3.0.3"
   },
   "devDependencies": {
     "@faker-js/faker": "^9.8.0",
     "@types/method-override": "^3.0.0",
+    "@types/morgan": "^1.9.10",
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.1.2",
     "nodemon": "^3.1.10",
